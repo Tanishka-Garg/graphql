@@ -23,6 +23,7 @@ const UserLists = [
     email: "ran@g",
     age: 28,
     nationality: "FRENCH",
+    fav_movie: { id: 1, name: "Barbie", genre: "COMEDY" },
   },
   {
     id: 4,
