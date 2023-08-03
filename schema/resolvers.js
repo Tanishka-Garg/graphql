@@ -16,8 +16,17 @@ const resolvers = {
     },
     movie: (parent, args) => {
       const name = args.name;
-      const movie = _.find(MovieList, { name: Number(name) });
+      const movie = _.find(MovieList, { name });
       return movie;
+    },
+  },
+  Mutation: {
+    createUser: (parent, args) => {
+      const user = args.input;
+      const lastId = UserLists[UserLists.length - 1].id;
+      user.id = lastId + 1;
+      UserLists.push(user);
+      return user;
     },
   },
 };
