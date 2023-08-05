@@ -28,6 +28,21 @@ const resolvers = {
       UserLists.push(user);
       return user;
     },
+    updateUsername: (parent, { input }) => {
+      const id = input.id;
+      const newName = input.newName;
+      const userIndex = UserLists.findIndex((user) => user.id === Number(id));
+      if (userIndex === -1) {
+        throw new Error("User not found");
+      }
+      UserLists[userIndex].name = newName;
+      return UserLists[userIndex];
+    },
+    deleteUser: (parent, args) => {
+      const id = args.id;
+      _.remove(UserLists, (user) => user.id === Number(id));
+      return null;
+    },
   },
 };
 
